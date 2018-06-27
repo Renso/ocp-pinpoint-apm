@@ -29,7 +29,7 @@ RUN chmod +x /root/howto-startup.sh /root/pinpoint-start.sh && \
 RUN git clone https://github.com/naver/pinpoint.git /pinpoint && \
     mkdir /pinpoint/logs
 WORKDIR /pinpoint
-RUN git checkout tags/1.6.0
+RUN git checkout tags/1.7.3
 RUN mvn install -Dmaven.test.skip=true -B
 
 
