@@ -6,8 +6,8 @@ LABEL io.k8s.description="Platform for running Pinpoint Application Performance 
       io.openshift.expose-services="28080:http,28081:http,28082:http" \
       io.openshift.tags="pinpoint-apm"
 
-ENV JAVA_8_HOME /usr/java/jdk1.8.0_172
-ENV JAVA_HOME /usr/java/jdk1.8.0_172
+ENV JAVA_8_HOME /usr/java/jdk1.8.0_171
+ENV JAVA_HOME /usr/java/jdk1.8.0_171
 
 COPY src/* /usr/local/src/
 
@@ -15,12 +15,10 @@ RUN cd /usr/local/src/ && \
     cp epel-apache-maven.repo /etc/yum.repos.d/ && \
     rpm -i epel-release-7-8.noarch.rpm && \
     yum install git wget tar hostname lsof net-tools apache-maven -y && \
-    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u172-linux-x64.rpm && \
-    rpm -i jdk-6u45-linux-amd64.rpm --force && \
-    rpm -i jdk-7u79-linux-x64.rpm --force && \
-    rpm -i jdk-8u101-linux-x64.rpm --force && \
+    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u171-b11/512cd62ec5174c3487ac17c61aaa89e8/jdk-8u171-linux-x64.rpm && \
+    rpm -i jdk-8u171-linux-x64.rpm --force && \
     yum clean all && \
-    rm -rf jdk-6u45-linux-amd64.rpm jdk-7u79-linux-x64.rpm jdk-8u172-linux-x64.rpm epel-release-7-8.noarch.rpm
+    rm -rf jdk-8u171-linux-x64.rpm epel-release-7-8.noarch.rpm
 
 COPY src/howto-startup.sh /root/
 COPY src/pinpoint-start.sh /root/
